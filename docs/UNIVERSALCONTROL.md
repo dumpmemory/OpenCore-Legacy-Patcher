@@ -3,7 +3,11 @@
 
 Introduced in macOS 12 Monterey, Universal Control is a feature that allows a Mac to control other Macs and/or iPads, share input devices, and share files across them simultaneously. With OpenCore and FeatureUnlock, Universal Control can be unlocked for most unsupported Macs, as long as they meet the technical requirements listed on this page.
 
-* Note: The following page is primarily for tinkerers, no proper support is provided outside of Discord support (see bottom of page).
+::: warning Note
+
+These features are not actively tested and may break at any time. The following page is primarily for tinkerers, no proper support is provided outside of Discord support (see bottom of page).
+
+:::
 
 ## Enabling Universal Control
 
@@ -12,7 +16,7 @@ If you meet all the requirements, in most cases you can go to Display Preference
 
 | Display Preferences | Universal Control settings |
 | :--- | :--- |
-| ![](../images/UC-enable-1.png) | ![OCLP GUI Build Finished](../images/UC-enable-2.png) |
+| ![](./images/UC-enable-1.png) | ![OCLP GUI Build Finished](./images/UC-enable-2.png) |
 
 
 Most Mac models from 2011 and above should work out of the box. However, older Macs like the 2008-2011 MacBook Pros require upgrading the Wi-Fi/Bluetooth card to a newer model. More info in the [requirements section.](#requirements-for-universal-control)
@@ -183,7 +187,7 @@ The following models are blacklisted from using Universal Control by Apple:
 - Macmini7,x - Mac mini 2014
 - MacPro6,x - Mac Pro Late 2013
 
-The hardware in these models are capable of supporting Universal Control, but due to blacklisting, the only solution to use Universal Control on these models is to spoof their SMBIOS. SMBIOS spoofing essentially fools some aspects of macOS to think they are running on a different machine. 
+The hardware in these models are capable of supporting Universal Control, but due to blacklisting, the only solution to use Universal Control on these models is to spoof their SMBIOS. SMBIOS spoofing essentially fools some aspects of macOS to think they are running on a different machine.
 
 With SMBIOS Spoofing, the Universal Control handshake recognizes a different SMBIOS and thus grants a blacklisted Mac to connect to other Macs and iPads with Universal Control.
 
@@ -202,11 +206,10 @@ Before we continue, please keep in mind that SMBIOS Spoofing is an advanced feat
 
 ### How to spoof
 
-Ventura has dropped more models which includes all of the blacklisted Macs in question, making the procedure slightly different. It is important to follow the guide for the version you're on, failing to do so is likely to cause boot issues.
 
-::: details macOS Sonoma
+::: details macOS Sequoia
 
-Firstly run OpenCore Legacy Patcher. 
+Firstly run OpenCore Legacy Patcher.
 
 Then go to **Settings** and **SMBIOS** tab, set SMBIOS Spoof Level to **Moderate**. Set SMBIOS Spoof Model **one listed next to your native model in the table for spoofed models below.**
 
@@ -214,7 +217,39 @@ Notice that "Allow native models" and "Allow Native Spoofs" **are NOT** enabled 
 
 | Main Settings view | SMBIOS settings |
 | :--- | :--- |
-| ![](../images/ventura_uc1.png) | ![](../images/ventura_uc2.png) |
+| ![](./images/ventura_uc1.png) | ![](./images/ventura_uc2.png) |
+
+
+
+::: details Table for spoofed models (click to expand)
+
+Spoofing to any model with native Sequoia support should work, but these are the earliest Macs natively supported by Sequoia and thus chosen for the sake of simplicity.
+
+**Reminder:** Macs that are not listed on this table work without spoofing, including systems that do not natively support Sequoia as long as the other requirements are met, since they aren't blacklisted.
+
+
+| Mac by name | Native SMBIOS | Spoof SMBIOS |
+|-------------|---------------|--------------|
+| MacBook Air Early 2015 11" / 13" | MacBookAir7,x | MacBookAir9,1 |
+| MacBook Pro Early 2015 13" | MacBookPro12,x | MacBookPro15,2 |
+| MacBook Pro Mid 2015 15" | MacBookPro11,4 / 11,5 | MacBookPro15,2 |
+| iMac Late 2015 21" | iMac16,x | iMac19,2 |
+| Mac mini Late 2014  | Macmini7,x | MacMini8,1 |
+| Mac Pro Late 2013 | MacPro6,x | MacPro7,1 |
+
+:::
+
+::: details macOS Sonoma
+
+Firstly run OpenCore Legacy Patcher.
+
+Then go to **Settings** and **SMBIOS** tab, set SMBIOS Spoof Level to **Moderate**. Set SMBIOS Spoof Model **one listed next to your native model in the table for spoofed models below.**
+
+Notice that "Allow native models" and "Allow Native Spoofs" **are NOT** enabled unlike on Monterey, this is on purpose. They are no longer relevant on Sonoma and enabling them will cause boot issues.
+
+| Main Settings view | SMBIOS settings |
+| :--- | :--- |
+| ![](./images/ventura_uc1.png) | ![](./images/ventura_uc2.png) |
 
 
 
@@ -222,7 +257,7 @@ Notice that "Allow native models" and "Allow Native Spoofs" **are NOT** enabled 
 
 Spoofing to any model with native Sonoma support should work, but these are the earliest Macs natively supported by Sonoma and thus chosen for the sake of simplicity.
 
-**Reminder:** Macs that are not listed on this table work without spoofing, including systems that do not natively support Ventura as long as the other requirements are met, since they aren't blacklisted.
+**Reminder:** Macs that are not listed on this table work without spoofing, including systems that do not natively support Sonoma as long as the other requirements are met, since they aren't blacklisted.
 
 
 | Mac by name | Native SMBIOS | Spoof SMBIOS |
@@ -238,7 +273,7 @@ Spoofing to any model with native Sonoma support should work, but these are the 
 
 ::: details macOS Ventura
 
-Firstly run OpenCore Legacy Patcher. 
+Firstly run OpenCore Legacy Patcher.
 
 Then go to **Settings** and **SMBIOS** tab, set SMBIOS Spoof Level to **Moderate**. Set SMBIOS Spoof Model **one listed next to your native model in the table for spoofed models below.**
 
@@ -246,7 +281,7 @@ Notice that "Allow native models" and "Allow Native Spoofs" **are NOT** enabled 
 
 | Main Settings view | SMBIOS settings |
 | :--- | :--- |
-| ![](../images/ventura_uc1.png) | ![](../images/ventura_uc2.png) |
+| ![](./images/ventura_uc1.png) | ![](./images/ventura_uc2.png) |
 
 
 
@@ -272,14 +307,14 @@ Spoofing to any model with native Ventura support should work, but these are the
 
 Firstly, run OpenCore Legacy Patcher. Secondly, go to **Settings** then the **App** tab and tick **Allow native models**.
 
-[](../images/OCLP-App-Allow-Native-Models.png)
+[](./images/OCLP-App-Allow-Native-Models.png)
 
 Then, go to **SMBIOS** tab, tick **Allow spoofing native Macs**, set SMBIOS Spoof Level to **Moderate**. Set SMBIOS Spoof Model to **one listed next to your native model in the table for spoofed models below.**
 
 
 | Main Settings view | SMBIOS settings |
 | :--- | :--- |
-| ![](../images/OCLP-SMBIOS-Allow-Native-Spoof.png) | ![](../images/OCLP-smbios-settings.png) |
+| ![](./images/OCLP-SMBIOS-Allow-Native-Spoof.png) | ![](./images/OCLP-smbios-settings.png) |
 
 
 ::: details Table for spoofed models (click to expand)

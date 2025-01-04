@@ -1,4 +1,6 @@
-![](../images/sonoma.png)
+# macOS Sonoma
+
+![](./images/sonoma.png)
 
 *Well here we are again, it's always such a pleasure~*
 
@@ -31,7 +33,7 @@ OpenCore Legacy Patcher 1.0.0 will support Sonoma for all models normally suppor
 
 * [Bluetooth](#bluetooth)
 * [T1 Security chip](#t1-security-chip)
-* [USB 1.1 (OHCI/UHCI) Support](#usb-11-ohciuhci-support)
+* [USB 1.1 (OHCI/UHCI) Support](#usb-1-1-ohci-uhci-support)
 * [Graphics support and issues](#graphics-support-and-issues)
 
 
@@ -71,7 +73,7 @@ While USB 1.1 may seem unimportant, it handles many important devices on your sy
 
 With OpenCore Legacy Patcher v0.6.0+, basic support has been implemented via Root Volume patching. However due to this, users will need to use a USB hub for installation and post-OS updates when patches are cleaned:
 
-![](../images/usb11-chart.png)
+![](./images/usb11-chart.png)
 
 ::: warning The following systems rely on USB 1.1
 

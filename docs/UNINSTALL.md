@@ -1,6 +1,24 @@
-# Uninstalling OpenCore
+# Uninstall
 
-## Uninstalling the bootloader
+This guide tells you different ways to uninstall OCLP and/or patches.
+
+## Delete everything and revert back to native macOS
+
+Boot a native macOS installer, go to Disk Utility and choose View -> Show All Devices. Wipe the full disk by choosing the top option on the left sidebar and start macOS installation.
+
+[Reset NVRAM](https://support.apple.com/HT204063) afterwards.
+
+## Manual methods
+
+### Uninstalling the application
+
+To fully uninstall the OCLP application including LaunchAgent and PrivilegedHelperTool, download the uninstaller package from [the releases page.](https://github.com/dortania/OpenCore-Legacy-Patcher/releases)
+
+### Reverting root patches
+
+Open the OCLP application and go into the Post Install Root Patch menu, choose Revert Root Patches.
+
+### Uninstalling the bootloader
 
 1. Remove OpenCore either from the USB or internal drive
 
@@ -13,11 +31,9 @@
 
 :::warning
 
-Note that after you remove OpenCore, your Mac will no longer boot and show the "prohibited" symbol. Be ready to install an natively-supported version of macOS before you uninstall OpenCore.
+Note that after you remove OpenCore, your Mac will no longer boot and show the "prohibited" symbol. Be prepared to have a bootable USB drive with either OpenCore or natively-supported version of macOS before you uninstall the bootloader.
 
-* This does not apply to native Macs just using OpenCore to achieve features like AirPlay to Mac and Sidecar, but it is still recommended to reinstall macOS after removing OpenCore, if using SMBIOS spoofing to enable Univeral Control.
+* This does not apply to native Macs just using OpenCore to achieve features like AirPlay to Mac and Sidecar, but it is still recommended to reinstall macOS after removing OpenCore, if using SMBIOS spoofing to enable Universal Control and other features.
 :::
 
-## Uninstalling the application
 
-If you want to remove the application without reinstalling the OS, navigate to `/Library/Application Support/` and delete the Dortania folder.
